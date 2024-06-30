@@ -1,5 +1,5 @@
 const Horario = require('../models/Horario');
-
+const mongoose = require('mongoose');
 async function addHorario(req, res) {
     try {
         const { rango } = req.body;

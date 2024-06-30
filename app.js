@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const canchasRoute = require('./routes/cancha');
-const reservationRoutes = require('./routes/reservaRoutes');
-const horariosRoute = require('./routes/horarioRoutes'); 
+const reservationRoutes = require('./routes/reserva');
+const horariosRoute = require('./routes/horario'); 
 
 const app = express();
 

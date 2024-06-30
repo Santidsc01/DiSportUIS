@@ -1,7 +1,6 @@
 const Reserva = require('../models/reserva');
 const mongoose = require('mongoose');
 
-// Función para verificar la disponibilidad de una cancha y crear una reserva si está disponible
 const createReservation = async (req, res) => {
     const { codigoestudiante, idcancha, fecha, idhorario } = req.body;
 
@@ -10,9 +9,9 @@ const createReservation = async (req, res) => {
 
         // Verificar si la cancha está disponible en la fecha y horario especificados
         const reservaExistente = await Reserva.findOne({
-            idcancha: mongoose.Types.ObjectId(idcancha),
+            idcancha: new mongoose.Types.ObjectId(idcancha),
             fecha: date,
-            idhorario: mongoose.Types.ObjectId(idhorario)
+            idhorario: new mongoose.Types.ObjectId(idhorario)
         });
 
         if (reservaExistente) {
@@ -22,9 +21,9 @@ const createReservation = async (req, res) => {
         // Crear nueva reserva
         const nuevaReserva = new Reserva({
             codigoestudiante,
-            idcancha,
+            idcancha: new mongoose.Types.ObjectId(idcancha),
             fecha: date,
-            idhorario
+            idhorario: new mongoose.Types.ObjectId(idhorario)
         });
 
         // Guardar la reserva en la base de datos
@@ -36,6 +35,9 @@ const createReservation = async (req, res) => {
     }
 };
 
+
+
 module.exports = {
     createReservation
 };
+

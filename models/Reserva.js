@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
 const ReservaSchema = new Schema({
     codigoestudiante: {
         type: Number,
-        require: true
-    },
-    idcancha:{
-        ref: 'Cancha',
-        require: true,
-        type: Schema.Types.ObjectId
-    },
-    fecha:{
-        type: Date,
-        require: true
-    },
-    franja: {
-        type: Schema.Types.ObjectId,
-        ref: 'Horario',
         required: true
-}}, {
+    },
+    idcancha: {
+        type: Schema.Types.ObjectId,
+        ref: 'Cancha', // Ajusta 'Cancha' al nombre correcto del modelo de Cancha
+        required: true
+    },
+    fecha: {
+        type: Date,
+        required: true
+    },
+    idhorario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Horario', // Ajusta 'Horario' al nombre correcto del modelo de Horario
+        required: true
+    }
+}, {
     timestamps: true,
     versionKey: false
 });
