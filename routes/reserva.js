@@ -4,5 +4,4 @@ const { createReservation } = require('../controllers/reservaController');
 
 
 router.post('/reservations', createReservation);
-
 module.exports = router;
