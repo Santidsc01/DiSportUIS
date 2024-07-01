@@ -9,21 +9,22 @@ const createReservation = async (req, res) => {
 
         // Verificar si la cancha está disponible en la fecha y horario especificados
         const reservaExistente = await Reserva.findOne({
-            idcancha: new mongoose.Types.ObjectId(idcancha),
+            idcancha: mongoose.Types.ObjectId(idcancha),
             fecha: date,
-            idhorario: new mongoose.Types.ObjectId(idhorario)
+            idhorario: mongoose.Types.ObjectId(idhorario)
         });
 
         if (reservaExistente) {
             return res.status(409).json({ message: 'La cancha no está disponible en este horario.' });
         }
 
-        // Crear nueva reserva
+        // Crear nueva reserva y establecer disponible a false
         const nuevaReserva = new Reserva({
             codigoestudiante,
-            idcancha: new mongoose.Types.ObjectId(idcancha),
+            idcancha,
             fecha: date,
-            idhorario: new mongoose.Types.ObjectId(idhorario)
+            idhorario,
+            disponible: false
         });
 
         // Guardar la reserva en la base de datos
@@ -34,8 +35,6 @@ const createReservation = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
-
 
 module.exports = {
     createReservation

@@ -7,18 +7,22 @@ const ReservaSchema = new Schema({
         required: true
     },
     idcancha: {
-        type: Schema.Types.ObjectId,
-        ref: 'Cancha', // Ajusta 'Cancha' al nombre correcto del modelo de Cancha
-        required: true
+        ref: 'Cancha',
+        required: true,
+        type: Schema.Types.ObjectId
     },
     fecha: {
         type: Date,
         required: true
     },
     idhorario: {
-        type: Schema.Types.ObjectId,
-        ref: 'Horario', // Ajusta 'Horario' al nombre correcto del modelo de Horario
-        required: true
+        ref: 'Horario',
+        required: true,
+        type: Schema.Types.ObjectId
+    },
+    disponible: {
+        type: Boolean,
+        default: true
     }
 }, {
     timestamps: true,
@@ -28,3 +32,4 @@ const ReservaSchema = new Schema({
 const Reserva = mongoose.model('Reserva', ReservaSchema);
 
 module.exports = Reserva;
+
