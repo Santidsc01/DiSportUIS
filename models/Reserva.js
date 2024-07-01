@@ -7,22 +7,18 @@ const ReservaSchema = new Schema({
         required: true
     },
     idcancha: {
-        ref: 'Cancha',
-        required: true,
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref: 'Cancha', // Ajusta 'Cancha' al nombre correcto del modelo de Cancha
+        required: true
     },
     fecha: {
         type: Date,
         required: true
     },
     idhorario: {
-        ref: 'Horario',
-        required: true,
-        type: Schema.Types.ObjectId
-    },
-    disponible: {
-        type: Boolean,
-        default: true
+        type: Schema.Types.ObjectId,
+        ref: 'Horario', // Ajusta 'Horario' al nombre correcto del modelo de Horario
+        required: true
     }
 }, {
     timestamps: true,
